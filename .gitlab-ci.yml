@@ -12,3 +12,4 @@ blog:
   script:
     - yarn
     - yarn blog
+  retry: 2
