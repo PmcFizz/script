@@ -1,0 +1,14 @@
+default:
+  image: node:12.21.0-alpine3.12
+  tags:
+    - gitlab-org-docker
+
+cache:
+  key: $CI_PROJECT_NAME
+  paths:
+    - node_modules
+
+blog:    
+  script:
+    - yarn
+    - yarn blog
