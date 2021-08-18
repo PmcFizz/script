@@ -1,0 +1,16 @@
+# dotenv
+# .env
+*.local
+# dependencies
+node_modules
+
+
+# Nuxt generate
+dist
+
+# IDEA
+.idea
+.DS_Store
+
+# vscode
+.vscode
