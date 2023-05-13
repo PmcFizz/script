@@ -1,7 +1,5 @@
 default:
   image: node:12.21.0-alpine3.12
-  tags:
-    - docker-kp
 
 cache:
   key: $CI_PROJECT_NAME
