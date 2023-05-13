@@ -3,7 +3,7 @@ let cheerio = require('cheerio')
 
 let baseUrl = 'https://fizzz.blog.csdn.net/article/list'
 let blogHrefArr = []
-let totalPage = 13
+let totalPage = 18
 const articleSelector = `.article-list h4 a` // 列表页面文章选择器
 
 const setData = {
@@ -59,4 +59,4 @@ let getAllBlogHref = (n) => {
   })
 }
 
-getAllBlogHref(13)
+getAllBlogHref(18)
