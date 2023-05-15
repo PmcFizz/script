@@ -9,5 +9,5 @@ cache:
 blog:    
   script:
     - yarn
-    - yarn blog
+    - yarn one
   retry: 2

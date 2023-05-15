@@ -2,6 +2,7 @@ let superagent = require('superagent')
 let cheerio = require('cheerio')
 
 let baseUrl = 'https://fizzz.blog.csdn.net/article/list'
+// https://fizzz.blog.csdn.net/article/list/18?orderby=ViewCount
 let blogHrefArr = []
 let totalPage = 18
 const articleSelector = `.article-list h4 a` // 列表页面文章选择器
@@ -17,12 +18,16 @@ let getBlogDetail = (blogItem) => {
   .get(`${blogItem.href}`)
   .set(setData)
   .end((err, res) => {
-    if(res.statusCode === 200) {
+    if(res?.statusCode === 200) {
       console.log(`爬取成功:__${blogItem.name}`)
     }else{
       console.warn(`爬取失败:__${blogItem.name}`)
     }
   })
+}
+
+function errhandle(err) {
+  console.log(err)
 }
 
 // 使用递归获取所有页的博客链接
@@ -32,10 +37,14 @@ let getAllBlogHref = (n) => {
   superagent
     .get(link)
     .set(setData)
+    .retry(2)
+    .on('error', errhandle)
     .end((_,res) => {
+      console.log(res.text ,'列表内容')
       let $ = cheerio.load(res.text)
       const articleElArr = $(`${articleSelector}`)
       const len = articleElArr.length
+      console.log(len, 'article count')
       let item = null
       if (len > 1) {
         console.log(`获取到${len}条博客记录`)
