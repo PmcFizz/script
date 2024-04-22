@@ -40,7 +40,6 @@ let getAllBlogHref = (n) => {
     .retry(2)
     .on('error', errhandle)
     .end((_,res) => {
-      console.log(res.text ,'列表内容')
       let $ = cheerio.load(res.text)
       const articleElArr = $(`${articleSelector}`)
       const len = articleElArr.length
