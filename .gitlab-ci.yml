@@ -1,5 +1,7 @@
 default:
   image: node:16.16.0
+  tags:
+    - ef-runner
 
 cache:
   key: $CI_PROJECT_NAME
@@ -9,5 +11,5 @@ cache:
 blog:    
   script:
     - yarn
-    - yarn one
+    - yarn blog
   retry: 2
