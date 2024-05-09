@@ -1,7 +1,7 @@
 let superagent = require('superagent')
 let cheerio = require('cheerio')
 
-let baseUrl = 'https://fizzz.blog.csdn.net/article/list'
+let baseUrl = 'https://blog.csdn.net/github_35631540/article/list'
 // https://fizzz.blog.csdn.net/article/list/21?orderby=ViewCount
 let blogHrefArr = []
 let totalPage = 21
@@ -58,7 +58,7 @@ let getAllBlogHref = (n) => {
           blogHrefArr.push(blogItem)
         }
         n--
-        if(n>1){
+        if(n > totalPage - 5){
           getAllBlogHref(n)
         }else{
           return blogHrefArr
