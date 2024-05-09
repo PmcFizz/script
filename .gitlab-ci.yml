@@ -1,13 +1,20 @@
-default:
-  image: node:16.16.0
+stages: [stage_a, stage_b]
 
-cache:
-  key: $CI_PROJECT_NAME
-  paths:
-    - node_modules
+workflow:
+  auto_cancel:
+    on_job_failure: all
 
-blog:    
+job1:
+  stage: stage_a
+  script: sleep 60
+
+job2:
+  stage: stage_a
   script:
-    - yarn
-    - yarn one
-  retry: 2
+    - sleep 30
+    - exit 1
+
+job3:
+  stage: stage_b
+  script:
+    - sleep 30
