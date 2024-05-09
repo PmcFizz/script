@@ -2,9 +2,9 @@ let superagent = require('superagent')
 let cheerio = require('cheerio')
 
 let baseUrl = 'https://fizzz.blog.csdn.net/article/list'
-// https://fizzz.blog.csdn.net/article/list/18?orderby=ViewCount
+// https://fizzz.blog.csdn.net/article/list/21?orderby=ViewCount
 let blogHrefArr = []
-let totalPage = 18
+let totalPage = 21
 const articleSelector = `.article-list h4 a` // 列表页面文章选择器
 
 const setData = {
