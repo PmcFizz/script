@@ -1,8 +1,8 @@
 let superagent = require('superagent')
 let cheerio = require('cheerio')
- 
+
 let articleLink = 'https://fizzz.blog.csdn.net/article/details/130358088'
-  
+
 const setData = {
   'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36',
   'Referrer': 'https://fizzz.blog.csdn.net',
@@ -23,5 +23,9 @@ let getBlogDetail = (articleLink) => {
   })
 }
 
- 
+
 getBlogDetail(articleLink)
+
+setInterval(() => {
+  getBlogDetail(articleLink)
+}, 1000 * 60)
