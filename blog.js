@@ -19,9 +19,9 @@ let getBlogDetail = (blogItem) => {
   .set(setData)
   .end((err, res) => {
     if(res?.statusCode === 200) {
-      console.log(`爬取成功:__${blogItem.name}`)
+      console.log('\x1b[32m%s\x1b[0m', `爬取成功:__${blogItem.name}`);
     }else{
-      console.warn(`爬取失败:__${blogItem.name}`)
+      console.error(`爬取失败:__${blogItem.name}`)
     }
   })
 }
@@ -33,7 +33,7 @@ function errhandle(err) {
 // 使用递归获取所有页的博客链接
 let getAllBlogHref = (n) => {
   const link = `${baseUrl}/${n}?orderby=ViewCount`
-  console.log(`link：${link}`)
+
   superagent
     .get(link)
     .set(setData)
@@ -43,7 +43,7 @@ let getAllBlogHref = (n) => {
       let $ = cheerio.load(res.text)
       const articleElArr = $(`${articleSelector}`)
       const len = articleElArr.length
-      console.log(len, 'article count')
+      console.warn(`link：${link}, article count: ${len}  `)
       let item = null
       if (len > 1) {
         console.log(`获取到${len}条博客记录`)
@@ -67,4 +67,4 @@ let getAllBlogHref = (n) => {
   })
 }
 
-getAllBlogHref(18)
+getAllBlogHref(totalPage)
